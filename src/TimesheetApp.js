@@ -10,6 +10,16 @@ import Reports from "./components/Reports";
 function TimesheetApp() {
   const [isEmployer, setIsEmployer] = useState();
   const [count, setCount] = useState(0);
+  const [project, setProject] = useState({
+    projectNo: "",
+    projectName: "",
+    projectAllowedHours: 0,
+  });
+
+  function handleProjectChange(newObject) {
+    setProject(newObject);
+  }
+
   function handleChange(newValue) {
     setCount(newValue);
   }
@@ -32,7 +42,10 @@ function TimesheetApp() {
             </Route>
 
             <Route exact path="/newProjects">
-              <NewProjects />
+              <NewProjects
+                project={project}
+                handleProjectChange={handleProjectChange}
+              />
             </Route>
 
             <Route exact path="/timesheets">
