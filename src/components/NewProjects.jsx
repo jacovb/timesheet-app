@@ -6,7 +6,7 @@ export default function NewProjects({project, handleProjectChange}) {
     }
     return (
         <>
-            <p>New Projects</p>
+            <p>Add New Projects</p>
             <label for="projNo">Project Number: </label>
             <input 
                 type="text"
