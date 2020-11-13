@@ -1,39 +1,45 @@
 import React from "react";
 
-export default function NewProjects({project, handleProjectChange}) {
-    function handleProjectUpdate(event) {
-        handleProjectChange({ ...project, [event.target.name]: event.target.value})
+export default function NewProjects({newProject, handleNewProjectChange, projects, setProjects}) {
+    function handleNewProjectUpdate(event) {
+        handleNewProjectChange({ ...newProject, [event.target.name]: event.target.value})
+    }
+    function handleAddProjects(projects, newProject) { //adding project to array is still broken
+        setProjects(projects =>[...projects, newProject])
     }
     return (
         <>
             <p>Add New Projects</p>
-            <label for="projNo">Project Number: </label>
+            <label htmlFor="projNo">Project Number: </label>
             <input 
                 type="text"
                 id="projNo"
-                value={project.projectNo}
+                value={newProject.projectNo}
                 name="projectNo"
-                onChange={handleProjectUpdate}
+                onChange={handleNewProjectUpdate}
             />
             <br/>
-            <label for="projName">Project Name: </label>
+            <label htmlFor="projName">Project Name: </label>
             <input 
                 type="text"
                 id="projName"
-                value={project.projectName}
+                value={newProject.projectName}
                 name="projectName"
-                onChange={handleProjectUpdate}
+                onChange={handleNewProjectUpdate}
             />
             <br/>
-            <label for="projHours">Allowed Hours: </label>
+            <label htmlFor="projHours">Allowed Hours: </label>
             <input 
                 type="number"
                 id="projHours"
-                value={project.projectAllowedHours}
+                value={newProject.projectAllowedHours}
                 name="projectAllowedHours"
-                onChange={handleProjectUpdate}
+                onChange={handleNewProjectUpdate}
             />
-            {console.log(project)}
+            <br/>
+            <button onClick={handleAddProjects}>Add New Project</button>
+            {console.log("new Project ", newProject)}
+            {console.log("Array ", projects)}
         </>
     )
 }
