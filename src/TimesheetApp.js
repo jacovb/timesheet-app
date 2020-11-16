@@ -39,7 +39,6 @@ function TimesheetApp() {
               <button onClick={() => setIsEmployer(false)}>Employee</button>
 
               <Component count={count} makeChange={handleChange} />
-              {console.log(count)}
             </Route>
 
             <Route exact path="/newProjects">

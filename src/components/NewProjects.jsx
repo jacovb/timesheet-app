@@ -5,12 +5,16 @@ export default function NewProjects({newProject, setNewProject, projects, setPro
         setNewProject({ ...newProject, [event.target.name]: event.target.value})
     }
     function handleAddProjects() { 
-        setProjects([...projects, newProject])
-        setNewProject({
-            projectNo: "",
-            projectName: "",
-            projectAllowedHours: "",
-        })
+        if (projects.some((item) => item.projectNo === newProject.projectNo)) {
+            alert("Project Number Already Exists") 
+        } else {
+            setProjects([...projects, newProject])
+            setNewProject({
+                projectNo: "",
+                projectName: "",
+                projectAllowedHours: "", 
+            }) 
+        }
     }
 
     return (
@@ -23,6 +27,7 @@ export default function NewProjects({newProject, setNewProject, projects, setPro
                 value={newProject.projectNo}
                 name="projectNo"
                 onChange={handleNewProject}
+                required
             />
             <br/>
             <label htmlFor="projName">Project Name: </label>
@@ -44,8 +49,6 @@ export default function NewProjects({newProject, setNewProject, projects, setPro
             />
             <br/>
             <button onClick={handleAddProjects}>Add New Project</button>
-            {console.log("new Project ", newProject)}
-            {console.log("Array ", projects)}
         </>
     )
 }
