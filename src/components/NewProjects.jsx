@@ -1,12 +1,18 @@
 import React from "react";
 
-export default function NewProjects({newProject, handleNewProjectChange, projects, setProjects}) {
-    function handleNewProjectUpdate(event) {
-        handleNewProjectChange({ ...newProject, [event.target.name]: event.target.value})
+export default function NewProjects({newProject, setNewProject, projects, setProjects}) {
+    function handleNewProject(event) {
+        setNewProject({ ...newProject, [event.target.name]: event.target.value})
     }
-    function handleAddProjects(projects, newProject) { //adding project to array is still broken
-        setProjects(projects =>[...projects, newProject])
+    function handleAddProjects() { 
+        setProjects([...projects, newProject])
+        setNewProject({
+            projectNo: "",
+            projectName: "",
+            projectAllowedHours: "",
+        })
     }
+
     return (
         <>
             <p>Add New Projects</p>
@@ -16,7 +22,7 @@ export default function NewProjects({newProject, handleNewProjectChange, project
                 id="projNo"
                 value={newProject.projectNo}
                 name="projectNo"
-                onChange={handleNewProjectUpdate}
+                onChange={handleNewProject}
             />
             <br/>
             <label htmlFor="projName">Project Name: </label>
@@ -25,7 +31,7 @@ export default function NewProjects({newProject, handleNewProjectChange, project
                 id="projName"
                 value={newProject.projectName}
                 name="projectName"
-                onChange={handleNewProjectUpdate}
+                onChange={handleNewProject}
             />
             <br/>
             <label htmlFor="projHours">Allowed Hours: </label>
@@ -34,7 +40,7 @@ export default function NewProjects({newProject, handleNewProjectChange, project
                 id="projHours"
                 value={newProject.projectAllowedHours}
                 name="projectAllowedHours"
-                onChange={handleNewProjectUpdate}
+                onChange={handleNewProject}
             />
             <br/>
             <button onClick={handleAddProjects}>Add New Project</button>

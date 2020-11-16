@@ -17,9 +17,9 @@ function TimesheetApp() {
     projectAllowedHours: "",
   });
 
-  function handleNewProjectChange(newObject) {
-    setNewProject(newObject);
-  }
+  // function handleNewProjectChange(newObject) {
+  //   setNewProject(newObject);
+  // }
 
   function handleChange(newValue) {
     setCount(newValue);
@@ -45,7 +45,7 @@ function TimesheetApp() {
             <Route exact path="/newProjects">
               <NewProjects
                 newProject={newProject}
-                handleNewProjectChange={handleNewProjectChange}
+                setNewProject={setNewProject}
                 projects={projects}
                 setProjects={setProjects}
               />
