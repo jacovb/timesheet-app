@@ -4,6 +4,7 @@ export default function NewProjects({newProject, setNewProject, projects, setPro
     function handleNewProject(event) {
         setNewProject({ ...newProject, [event.target.name]: event.target.value})
     }
+    
     function handleAddProjects() { 
         if (projects.some((item) => item.projectNo === newProject.projectNo)) {
             alert("Project Number Already Exists") 
