@@ -14,7 +14,20 @@ export default function NewProjects({newProject, setNewProject, projects, setPro
                 projectName: "",
                 projectAllowedHours: "", 
             }) 
+            console.log(projects);
         }
+    }
+
+    function showAllProjects() {
+        console.log(projects)
+        projects.map((item) => (
+            <div key={item.projectNo}>
+                <h2>{item.projectNo}</h2>
+                <h3>{item.projectName}</h3>
+                <h3>{item.projectAllowedHours}</h3>
+            </div>
+            )
+        )
     }
 
     return (
@@ -49,6 +62,15 @@ export default function NewProjects({newProject, setNewProject, projects, setPro
             />
             <br/>
             <button onClick={handleAddProjects}>Add New Project</button>
+            <button onClick={showAllProjects}>Show All Projects</button>
+            {projects.map((item) => (
+                <div key={item.projectNo}>
+                    <h2>{item.projectNo}</h2>
+                    <h3>{item.projectName}</h3>
+                    <h3>{item.projectAllowedHours}</h3>
+                </div>
+                )
+            )}
         </>
     )
 }
